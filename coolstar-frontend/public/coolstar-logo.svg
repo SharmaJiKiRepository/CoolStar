@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="50" viewBox="0 0 220 50">
+  <!-- Filters for glow effects -->
+  <defs>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feFlood flood-color="#0077FF" flood-opacity="0.8" result="color" />
+      <feComposite in="color" in2="blur" operator="in" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00A7FF" />
+      <stop offset="100%" stop-color="#0055FF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Star Icon -->
+  <g transform="translate(10, 5) scale(0.4)">
+    <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" 
+             fill="url(#blue-gradient)" 
+             stroke="#FFFFFF" 
+             stroke-width="2"
+             filter="url(#neon-glow)" />
+  </g>
+  
+  <!-- Text: CoolStarDesign -->
+  <g filter="url(#neon-glow)">
+    <text x="40" y="30" font-family="Arial, sans-serif" font-weight="bold" font-size="20">
+      <tspan fill="#FFFFFF">Cool</tspan>
+      <tspan fill="url(#blue-gradient)">Star</tspan>
+      
+    </text>
+  </g>
+  
+  <!-- Decorative Line -->
+  <line x1="40" y1="35" x2="200" y2="35" stroke="url(#blue-gradient)" stroke-width="1.5" filter="url(#neon-glow)" />
+</svg>
