@@ -69,6 +69,9 @@ app.use(express.urlencoded({
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Serve static files from the frontend build directory
+app.use(express.static(path.join(__dirname, '..', 'coolstar-frontend', 'dist')));
+
 // API routes
 app.use("/api/products", productRoutes);
 app.use("/api/category-images", categoryImageRoutes);
@@ -114,6 +117,12 @@ app.post('/api/inquiries', async (req, res) => {
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
+});
+
+// Serve frontend index.html for all other routes (SPA support)
+app.get('*', (req, res) => {
+  // Ensure the path resolves correctly from backend directory to frontend dist
+  res.sendFile(path.resolve(__dirname, '..', 'coolstar-frontend', 'dist', 'index.html'));
 });
 
 // 404 handler
