@@ -18,9 +18,9 @@
       "source": "/api/(.*)",
       "destination": "/coolstar-backend/server.js"
     },
-    { 
-      "source": "/(.*)", 
-      "destination": "/coolstar-frontend/$1" 
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ]
 } 
